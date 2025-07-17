@@ -43,7 +43,7 @@
 
 @layer components {
     .btn-light-header {
-        @apply py-[5px] px-[10px] w-fit rounded-lg text-lg bg-text text-background-light;
+        @apply py-[5px] px-[10px] w-fit rounded-lg text-lg bg-text text-background-light shadow-md;
     }
 }
 

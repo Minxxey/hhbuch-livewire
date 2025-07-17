@@ -1,10 +1,11 @@
-<header x-data="{ open: false }" class="flex items-center justify-between relative md:items-start">
+<header x-data="{ open: false }" class="flex md:container md:mx-auto items-center justify-between relative md:items-center">
     <!-- Logo -->
-    <img src="{{ asset('logos/logo-text.png') }}" alt="Logo Image" class="w-15 h-auto block m-auto mt-2 md:hidden">
-    <img src="{{ asset('logos/logo-desktop.png') }}" alt="Logo Image" class="hidden md:block h-auto w-15 mx-2">
-
+    <a href="{{route('home')}}" class="block w-full mx-auto">
+        <img src="{{ asset('logos/logo-text.png') }}" alt="Logo Image" class="w-15 h-auto block m-auto mt-2 md:hidden">
+        <img src="{{ asset('logos/logo-desktop.png') }}" alt="Logo Image" class="hidden md:block h-auto w-18 mx-2">
+    </a>
     <!-- Burger Menu Button -->
-    <div  @click="open = !open"
+    <div @click="open = !open"
          class="absolute top-1 right-1 h-[35px] w-[35px] grid place-content-center overflow-visible cursor-pointer z-3 md:hidden">
         <div
             class="relative w-[35px] h-[3px] rounded-full transition-all duration-300
@@ -34,9 +35,9 @@
             <li class="btn-light-header"><a href="#">Upload</a></li>
         </ul>
     </nav>
-    <nav class="desktop-nav hidden md:block mt-1">
-        <ul class="text-white text-xl w-full flex flex-row items-end gap-2 mx-2">
-            <li class="ml-[3px] mb-[10px]"><a href="{{route('home')}}">Home</a></li>
+    <nav class="desktop-nav hidden md:block">
+        <ul class="text-white text-xl w-full flex flex-row items-center gap-2 mx-2">
+            <li class="ml-[3px]"><a href="{{route('home')}}">Home</a></li>
             <li class="btn-light-header"><a href="#">Upload</a></li>
         </ul>
     </nav>
