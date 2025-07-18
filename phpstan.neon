@@ -13,4 +13,3 @@ parameters:
         - node_modules
     level: 5
     ignoreErrors:
-    excludePaths:
