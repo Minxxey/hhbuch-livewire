@@ -14,4 +14,4 @@ parameters:
 
     level: 5
     ignoreErrors:
-        - '#expr\.resultUnused#'
+         - '#Expression "new.*class extends \\\\Livewire\\\\Volt\\\\Component.*does not do anything#'
