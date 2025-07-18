@@ -59,7 +59,7 @@ class UploadEntry extends Component
                 $validated,
                 [
                     'year' => date('Y'),
-                    'user_id' => auth()->user->id,
+                    'user_id' => auth()->user()->id,
                     'tag_id' => $validated['tag'],
                 ]
             ));
