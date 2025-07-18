@@ -16,9 +16,6 @@ class UploadEntry extends Component
     #[Validate('required|string')]
     public string $month = '';
 
-    #[Validate('nullable|int')]
-    public int $year = 0;
-
     #[Validate('nullable|string')]
     public string $note = '';
 
@@ -57,15 +54,12 @@ class UploadEntry extends Component
         $validated = $this->validate();
 
         //set all fields that don't require validation
-        $this->year = date('Y');
-        $user = auth()->user();
-
-        try {
+       try {
             $entry = Entry::create(array_merge(
                 $validated,
                 [
-                    'year' => $this->year,
-                    'user_id' => $user->id,
+                    'year' => date('Y'),
+                    'user_id' => auth()->user->id,
                     'tag_id' => $validated['tag'],
                 ]
             ));
