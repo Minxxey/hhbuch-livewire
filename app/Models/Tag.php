@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tag extends Model
 {
@@ -14,8 +14,8 @@ class Tag extends Model
         'color',
     ];
 
-    public function entries() : BelongsToMany
+    public function entries() : HasMany
     {
-        return $this->belongsToMany(Entry::class);
+        return $this->HasMany(Entry::class);
     }
 }

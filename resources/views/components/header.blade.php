@@ -32,13 +32,13 @@
     >
         <ul class="text-white text-xl w-full">
             <li class="ml-[3px] mb-[10px]"><a href="{{route('home')}}">Home</a></li>
-            <li class="btn-light-header"><a href="#">Upload</a></li>
+            <li class="btn-light-header"><a href="{{route('upload')}}">Upload</a></li>
         </ul>
     </nav>
     <nav class="desktop-nav hidden md:block">
         <ul class="text-white text-xl w-full flex flex-row items-center gap-2 mx-2">
             <li class="ml-[3px]"><a href="{{route('home')}}">Home</a></li>
-            <li class="btn-light-header"><a href="#">Upload</a></li>
+            <li class="btn-light-header"><a href="{{route('upload')}}">Upload</a></li>
         </ul>
     </nav>
 

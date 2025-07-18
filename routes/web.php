@@ -8,6 +8,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('upload', \App\Livewire\UploadEntry::class)->name('upload');
     Route::redirect('settings', 'settings/profile');
 
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');

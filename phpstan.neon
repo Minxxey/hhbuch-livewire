@@ -3,6 +3,15 @@ includes:
 parameters:
     paths:
         - app
+        - database
+        - routes
+        - config
+    excludePaths:
+        - vendor
+        - tests
+        - storage
+        - node_modules (?)
+
     level: 5
     ignoreErrors:
-    excludePaths:
+         - '#Expression "new.*class extends \\\\Livewire\\\\Volt\\\\Component.*does not do anything#'
