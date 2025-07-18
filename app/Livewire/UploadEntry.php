@@ -2,16 +2,17 @@
 
 namespace App\Livewire;
 
+use App\Models\Entry;
 use App\Models\Tag;
 use App\Models\User;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class UploadEntry extends Component
 {
-    #[Validate('required|float')]
-    public float $price = 0.0;
+    #[Validate('required|numeric')]
+    public ?float $price = null;
     #[Validate('required|string')]
     public string $month = '';
 
@@ -21,11 +22,13 @@ class UploadEntry extends Component
     #[Validate('nullable|string')]
     public string $note = '';
 
+    #[Validate('required|string')]
+    public string $tag = '';
+
     public array $months = [];
 
     public array $tags = [];
 
-    public array $users = [];
 
     public function mount()
     {
@@ -47,16 +50,31 @@ class UploadEntry extends Component
         $this->tags = Tag::all()
             ->mapWithKeys(fn($tag) => [$tag['id'] => ucfirst(strtolower($tag['name']))])
             ->toArray();
-
-        $this->users = [
-            'lina' => User::where('name', 'Lina')->first()->toArray(),
-            'timo' => User::where('name', 'Timo')->first()->toArray(),
-        ];
     }
 
     public function save()
     {
-        $this->validate();
+        $validated = $this->validate();
+
+        //set all fields that don't require validation
+        $this->year = date('Y');
+        $user = auth()->user();
+
+        try {
+            $entry = Entry::create(array_merge(
+                $validated,
+                [
+                    'year' => $this->year,
+                    'user_id' => $user->id,
+                    'tag_id' => $validated['tag'],
+                ]
+            ));
+
+            $this->dispatch('entry-uploaded', id: $entry->id);
+            $this->reset('price', 'note');
+        } catch (\Exception $e){
+            $this->dispatch('entry-upload-failed', e: $e->getMessage());
+        }
     }
 
     public function render()
