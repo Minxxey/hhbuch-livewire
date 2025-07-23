@@ -1,4 +1,5 @@
-<header x-data="{ open: false }" class="flex md:container md:mx-auto items-center justify-between relative md:items-center">
+<header x-data="{ open: false }"
+        class="flex md:container md:mx-auto items-center justify-between relative md:items-center">
     <!-- Logo -->
     <a href="{{route('home')}}" class="block w-full mx-auto">
         <img src="{{ asset('logos/logo-text.png') }}" alt="Logo Image" class="w-15 h-auto block m-auto mt-2 md:hidden">
@@ -33,12 +34,18 @@
         <ul class="text-white text-xl w-full">
             <li class="ml-[3px] mb-[10px]"><a href="{{route('home')}}">Home</a></li>
             <li class="btn-light-header"><a href="{{route('upload')}}">Upload</a></li>
+            @if(!auth()->user())
+                <li class="btn-light-header"><a href="{{route('login')}}">Login</a></li>
+            @endif
         </ul>
     </nav>
     <nav class="desktop-nav hidden md:block">
         <ul class="text-white text-xl w-full flex flex-row items-center gap-2 mx-2">
             <li class="ml-[3px]"><a href="{{route('home')}}">Home</a></li>
             <li class="btn-light-header"><a href="{{route('upload')}}">Upload</a></li>
+            @if(!auth()->user())
+                <li class="btn-light-header"><a href="{{route('login')}}">Login</a></li>
+            @endif
         </ul>
     </nav>
 
