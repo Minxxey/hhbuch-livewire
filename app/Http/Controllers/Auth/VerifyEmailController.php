@@ -23,7 +23,6 @@ class VerifyEmailController extends Controller
 
         if ($user->markEmailAsVerified()) {
             /** @var \Illuminate\Contracts\Auth\MustVerifyEmail $user */
-
             event(new Verified($user));
         }
 

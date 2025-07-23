@@ -20,7 +20,7 @@ class EntryFactory extends Factory
     {
         $months = [
             'january', 'february', 'march', 'april', 'may', 'june',
-            'july', 'august', 'september', 'october', 'november', 'december'
+            'july', 'august', 'september', 'october', 'november', 'december',
         ];
 
         return [
@@ -29,7 +29,7 @@ class EntryFactory extends Factory
             'year' => 2025,
             'note' => $this->faker->sentence(),
             'user_id' => User::inRandomOrder()->first()->id,
-            'tag_id' => Tag::inRandomOrder()->first()->id
+            'tag_id' => Tag::inRandomOrder()->first()->id,
         ];
     }
 }

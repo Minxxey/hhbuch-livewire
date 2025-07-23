@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Enum\TagEnum;
 use App\Models\Tag;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TagSeeder extends Seeder

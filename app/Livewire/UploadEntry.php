@@ -4,8 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Entry;
 use App\Models\Tag;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -13,6 +11,7 @@ class UploadEntry extends Component
 {
     #[Validate('required|numeric')]
     public ?float $price = null;
+
     #[Validate('required|string')]
     public string $month = '';
 
@@ -25,7 +24,6 @@ class UploadEntry extends Component
     public array $months = [];
 
     public array $tags = [];
-
 
     public function mount()
     {
@@ -45,7 +43,7 @@ class UploadEntry extends Component
         ];
 
         $this->tags = Tag::all()
-            ->mapWithKeys(fn($tag) => [$tag['id'] => ucfirst(strtolower($tag['name']))])
+            ->mapWithKeys(fn ($tag) => [$tag['id'] => ucfirst(strtolower($tag['name']))])
             ->toArray();
     }
 
@@ -53,8 +51,8 @@ class UploadEntry extends Component
     {
         $validated = $this->validate();
 
-        //set all fields that don't require validation
-       try {
+        // set all fields that don't require validation
+        try {
             $entry = Entry::create(array_merge(
                 $validated,
                 [
@@ -66,7 +64,7 @@ class UploadEntry extends Component
 
             $this->dispatch('entry-uploaded', id: $entry->id);
             $this->reset('price', 'note');
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             $this->dispatch('entry-upload-failed', e: $e->getMessage());
         }
     }

@@ -9,12 +9,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Tag extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'color',
     ];
 
-    public function entries() : HasMany
+    public function entries(): HasMany
     {
         return $this->HasMany(Entry::class);
     }

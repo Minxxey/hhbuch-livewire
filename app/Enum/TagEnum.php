@@ -11,9 +11,9 @@ enum TagEnum: string
     case MEDICINE = 'medizin';
     case OTHER = 'sonstiges';
 
-    public function color() {
-        return match($this)
-        {
+    public function color()
+    {
+        return match ($this) {
             self::SHOPPING => '#88AA99',
             self::DINING_OUT => '#6B9080',
             self::TRAVEL => '#A4C3B2',
@@ -22,5 +22,4 @@ enum TagEnum: string
             self::OTHER => '#F6FFF8',
         };
     }
-
 }
