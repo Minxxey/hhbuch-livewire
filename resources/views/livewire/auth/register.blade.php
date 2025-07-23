@@ -51,6 +51,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autofocus
             autocomplete="name"
             :placeholder="__('Full name')"
+            class:input="px-[10px] py-[5px] h-auto  !ps-[10px] !pe-px"
         />
 
         <!-- Email Address -->

@@ -79,7 +79,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
 
-    <form wire:submit="login" class="flex flex-col gap-6">
+    <form wire:submit="login" class="flex flex-col gap-2">
         <!-- Email Address -->
         <flux:input
             wire:model="email"
@@ -89,6 +89,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autofocus
             autocomplete="email"
             placeholder="email@example.com"
+            class:input="px-[10px] py-[5px] h-auto  !ps-[10px] !pe-px"
         />
 
         <!-- Password -->
@@ -101,6 +102,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
                 autocomplete="current-password"
                 :placeholder="__('Password')"
                 viewable
+                class:input="px-[10px] py-[5px] h-auto  !ps-[10px] !pe-px"
             />
 
             @if (Route::has('password.request'))
@@ -114,7 +116,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <flux:checkbox wire:model="remember" :label="__('Remember me')" />
 
         <div class="flex items-center justify-end">
-            <flux:button variant="primary" type="submit" class="w-full">{{ __('Log in') }}</flux:button>
+            <flux:button variant="primary" type="submit" class="w-full px-[10px] py-[5px] h-auto">{{ __('Log in') }}</flux:button>
         </div>
     </form>
 
