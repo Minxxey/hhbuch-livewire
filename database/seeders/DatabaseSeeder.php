@@ -14,12 +14,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            TagSeeder::class
+            TagSeeder::class,
         ]);
 
-        if(config('app.env') === 'local') {
+        if (config('app.env') === 'local') {
             $this->call([
-                EntrySeeder::class
+                EntrySeeder::class,
             ]);
         }
 

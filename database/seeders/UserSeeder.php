@@ -14,11 +14,11 @@ class UserSeeder extends Seeder
     {
         User::factory()->create([
             'name' => 'Lina',
-            'email' => 'contact@linastaudt.de'
+            'email' => 'contact@linastaudt.de',
         ]);
         User::factory()->create([
             'name' => 'Timo',
-            'email' => 'timo@linastaudt.de'
+            'email' => 'timo@linastaudt.de',
         ]);
     }
 }
