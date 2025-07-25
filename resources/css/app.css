@@ -64,3 +64,19 @@ select:focus[data-flux-control] {
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */
+
+[data-flux-input] svg[data-flux-icon] {
+    width: 1.5em !important;
+    height: 1.5em !important;
+    min-width: 0;
+    min-height: 0;
+    max-width: 1.5em;
+    max-height: 1.5em;
+}
+
+[data-flux-button] {
+    /* Your custom styles here */
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    padding: 0 !important;
+}

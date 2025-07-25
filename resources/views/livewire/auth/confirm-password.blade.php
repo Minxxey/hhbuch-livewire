@@ -51,8 +51,9 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autocomplete="new-password"
             :placeholder="__('Password')"
             viewable
+            class:input="px-[10px] py-[5px] h-auto  !ps-[10px] !pe-px"
         />
 
-        <flux:button variant="primary" type="submit" class="w-full">{{ __('Confirm') }}</flux:button>
+        <flux:button variant="primary" type="submit" class="w-full px-[10px] py-[5px] h-auto">{{ __('Confirm') }}</flux:button>
     </form>
 </div>

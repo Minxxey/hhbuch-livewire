@@ -22,24 +22,16 @@ new #[Layout('components.layouts.auth')] class extends Component {
     }
 }; ?>
 
-<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
     <x-auth-header :title="__('Forgot password')" :description="__('Enter your email to receive a password reset link')" />
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
 
-    <form wire:submit="sendPasswordResetLink" class="flex flex-col gap-6">
-        <!-- Email Address -->
-        <flux:input
-            wire:model="email"
-            :label="__('Email Address')"
-            type="email"
-            required
-            autofocus
-            placeholder="email@example.com"
-        />
+    <form wire:submit="sendPasswordResetLink" class="flex flex-col gap-1">
+        <x-form.input type="email" label-text="Email" name="email" wire:model="email"></x-form.input>
 
-        <flux:button variant="primary" type="submit" class="w-full">{{ __('Email password reset link') }}</flux:button>
+        <button type="submit" class="btn-light-header">Email password reset link</button>
     </form>
 
     <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-400">

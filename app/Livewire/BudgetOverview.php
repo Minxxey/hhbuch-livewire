@@ -8,6 +8,8 @@ use Livewire\Component;
 
 class BudgetOverview extends Component
 {
+    public int $year;
+
     #[Validate('required|string')]
     public string $month = '';
 
@@ -44,6 +46,7 @@ class BudgetOverview extends Component
             'december' => 'Dezember',
         ];
 
+        $this->year = now()->year;
     }
 
     public function render()
@@ -53,11 +56,8 @@ class BudgetOverview extends Component
 
     public function loadBudgetData()
     {
-        $this->entriesLina = Entry::where('user_id', 1)
-            ->where('month', $this->month)->with('tag')
-            ->get()->toArray();
-        $this->entriesTimo = Entry::where('user_id', 2)
-            ->where('month', $this->month)->with('tag')->get()->toArray();
+        $this->entriesLina = $this->getEntriesForMonth(1, $this->month, $this->year);;
+        $this->entriesTimo = $this->getEntriesForMonth(2, $this->month, $this->year);;
 
         $this->expensesLina = array_sum(array_column($this->entriesLina, 'price'));
         $this->expensesTimo = array_sum(array_column($this->entriesTimo, 'price'));
@@ -69,6 +69,24 @@ class BudgetOverview extends Component
         $amountOwed = abs($this->sharedExpenses - ($debtor === 'Lina' ? $this->expensesLina : $this->expensesTimo));
 
         $this->debtMessage = "{$debtor} schuldet {$creditor} ".number_format($amountOwed, 2, ',', '.').' €.';
+    }
+    private function getEntriesForMonth(int $userId, string $month, int $year)
+    {
+        $entries = Entry::where('user_id', $userId)
+            ->where('month', $month)
+            ->where('year', $year)
+            ->with('tag')
+            ->get()->toArray();
 
+        if (!empty($entries)) {
+            return $entries;
+        }
+
+        // fallback: previous year
+        return Entry::where('user_id', $userId)
+            ->where('month', $month)
+            ->where('year', $year - 1)
+            ->with('tag')
+            ->get()->toArray();
     }
 }

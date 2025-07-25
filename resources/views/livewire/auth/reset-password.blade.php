@@ -82,6 +82,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             type="email"
             required
             autocomplete="email"
+            class:input="px-[10px] py-[5px] h-auto  !ps-[10px] !pe-px"
         />
 
         <!-- Password -->
@@ -93,6 +94,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autocomplete="new-password"
             :placeholder="__('Password')"
             viewable
+            class:input="px-[10px] py-[5px] h-auto  !ps-[10px] !pe-px"
         />
 
         <!-- Confirm Password -->
@@ -104,10 +106,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autocomplete="new-password"
             :placeholder="__('Confirm password')"
             viewable
+            class:input="px-[10px] py-[5px] h-auto  !ps-[10px] !pe-px"
         />
 
         <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
+            <flux:button type="submit" variant="primary" class="w-full px-[10px] py-[5px] h-auto">
                 {{ __('Reset password') }}
             </flux:button>
         </div>
